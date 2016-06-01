@@ -4,15 +4,18 @@ $(document).ready(function(){
 
 function drawgrid(numsquares){
   var squaresize = $('.container').width() / numsquares;
-  squaresize = squaresize.toPrecision(1);
+  /*squaresize = squaresize.toFixed(0);*/
+  squaresize = Math.floor(squaresize);
+  $('.container').width(squaresize*numsquares);
+  $('.container').height(squaresize*numsquares);
 
   for(var i = 0; i < numsquares * numsquares; i++){
     var $box = $('<div class="square"></div>');
     $('.container').append($box);
   }
 
-  $('.square').css("width", squaresize);
-  $('.square').css("height", squaresize);
+  $('.square').css("width", squaresize + 1);
+  $('.square').css("height", squaresize + 1);
 
   $('.square').mouseenter(function(){
     $(this).css("background-color", "#C63D0F");
